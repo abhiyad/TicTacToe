@@ -1,0 +1,8 @@
+f x = length x > 6
+main = do
+    str<-getLine
+    let n = read str::Int
+    let l = [1,2 .. n]
+    let m = [n,n-1 .. 1]
+    let newl=zipWith (\a b -> a*b+1) l m
+    print newl
