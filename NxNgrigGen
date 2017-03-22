@@ -1,0 +1,6 @@
+main = do
+    str<-getLine
+    let n = read str::Int
+    let l = (replicate n) 0
+    let newl = (replicate n) l
+    print newl
