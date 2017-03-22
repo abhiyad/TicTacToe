@@ -1,4 +1,4 @@
-summ xs = foldl (\k x -> k + x) 0 xs
+summ xs = foldl (\k x -> k + x) 0 xs -- 0 is initial value of k (accumulator) and xs is list from which x is taken one by one
 main = do
     str<-getLine
     let n = read str::Int
