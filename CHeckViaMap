@@ -1,0 +1,6 @@
+main = do
+    str<-getLine
+    let n = read str::Int
+    let l = [6,7 .. n] 
+    let s=and $ map (>4) l
+    print s
