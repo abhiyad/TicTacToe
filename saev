@@ -1,0 +1,17 @@
+import Data.List
+     
+checkrows n l r |(and $ map (==n) (l!!r)) = 1
+                |otherwise = 0
+    
+check n l r res =do
+   let newres=checkrows n l r
+   if(newres==1) then return 1
+   else do
+       
+    
+main = do
+    str<-getLine
+    let n = read str::Int
+    let newl = replicate 4 (replicate n 0)
+    let s= checkrows 0 newl 1
+    print (s)
