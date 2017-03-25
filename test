@@ -1,0 +1,57 @@
+sum' row =foldl (\acc x -> acc+x) 0 (filter (/=2) row)
+
+call state n i=do
+    if(i<n-1) then do
+        checkwin state n i
+        call state n (i+1)
+        else return () 
+
+game state i j c n= do
+
+    -- algo to change i j th entry of the state of the game
+    
+    let row=state !! i
+    let p1=take j row
+    let p2= drop (j+1) row
+    let nrow=p1++[c `mod` 2]++p2
+    let py1=take i state
+    let py2=drop (i+1) state
+    let f=py1++[nrow]++py2
+    
+    
+    printgame f n 0
+    
+    call state n 0
+    input state n
+
+
+input state n= do
+    str2<-getLine
+    let i=read str2::Int
+    str3<-getLine
+    let j=read str3::Int
+    game state i j 1 n
+
+
+checkwin state n i=do
+        let s= sum' (state!!i)
+        if(s==n) then print "1 has Won" 
+            else do
+                if( s==3*n) then print " 3 has won" 
+                    else
+                       print ""
+                      
+                    
+printgame state n i= do
+      print (state !! i)
+      if(i<n-1) 
+          then do
+              printgame state n (i+1)
+      else print "-----------------------"    
+
+main = do
+    print "please enter dimension of the Grid"
+    str<-getLine
+    let n = read str::Int
+    let state = (replicate n) ((replicate n) 8)
+    input state n
