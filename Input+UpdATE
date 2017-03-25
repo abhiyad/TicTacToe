@@ -20,6 +20,9 @@ game state i j c n= do
     let py2=drop (i+1) state
     let f=py1++[nrow]++py2
     printgame f n 0
+ --   if(checkwin) then display it
+ --  else call input function
+ 
 
 main = do
     print "please enter dimension of the Grid"
