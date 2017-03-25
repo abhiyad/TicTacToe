@@ -1,6 +1,8 @@
-printgame f n i = do
-      print (f !! i)
-      if(i<n-1) then printgame f n (i+1)
+printgame state n i= do
+      print (state !! i)
+      if(i<n-1) 
+          then do
+              printgame state n (i+1)
       else print "-----------------------"
       
 input state n= do
@@ -12,6 +14,9 @@ input state n= do
 
 
 game state i j c n= do
+
+    -- algo to change i j th entry of the state of the game
+    
     let row=state !! i
     let p1=take j row
     let p2= drop (j+1) row
@@ -19,14 +24,19 @@ game state i j c n= do
     let py1=take i state
     let py2=drop (i+1) state
     let f=py1++[nrow]++py2
+    
+    
     printgame f n 0
- --   if(checkwin) then display it
- --  else call input function
+    
+ --   if(checkwin) then display who wins and end
+ --  else call input state n
  
 
 main = do
     print "please enter dimension of the Grid"
     str<-getLine
     let n = read str::Int
-    let newl = (replicate n) ((replicate n) 0)
-    input newl n
+    let state = (replicate n) ((replicate n) 8)
+    input state n
+    
+    
