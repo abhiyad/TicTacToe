@@ -1,3 +1,6 @@
+sum' row =foldl (\acc x -> acc+x) 0 (filter (/=2) row)
+
+
 printgame state n i= do
       print (state !! i)
       if(i<n-1) 
