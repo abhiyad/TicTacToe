@@ -39,7 +39,7 @@ checkwin state n i=do
             else do
                 if( s==3*n) then print " 3 has won" 
                     else
-                       print ""
+                       return()
                       
                     
 printgame state n i= do
@@ -47,7 +47,7 @@ printgame state n i= do
       if(i<n-1) 
           then do
               printgame state n (i+1)
-      else print "-----------------------"    
+      else print "------------------"    
 
 main = do
     print "please enter dimension of the Grid"
