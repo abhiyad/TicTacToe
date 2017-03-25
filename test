@@ -21,16 +21,16 @@ game state i j c n= do
     
     printgame f n 0
     
-    call state n 0
-    input state n
+    call f n 0
+    input f n (c+1)
 
 
-input state n= do
+input state n c= do
     str2<-getLine
     let i=read str2::Int
     str3<-getLine
     let j=read str3::Int
-    game state i j 1 n
+    game state i j (c `mod` 2) n
 
 
 checkwin state n i=do
@@ -54,4 +54,4 @@ main = do
     str<-getLine
     let n = read str::Int
     let state = (replicate n) ((replicate n) 8)
-    input state n
+    input state n 0
