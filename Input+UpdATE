@@ -1,0 +1,19 @@
+update state i j c= do
+    let row=state !! i
+    let p1=take j row
+    let p2= drop (j+1) row
+    let nrow=p1++[c `mod` 2]++p2
+    let py1=take j state
+    let py2=drop (j+1) state
+    let f=py1++[nrow]++py2
+    print f
+
+main = do
+    str<-getLine
+    let n = read str::Int
+    let newl = (replicate n) ((replicate n) 0)
+    str2<-getLine
+    let i=read str2::Int
+    str3<-getLine
+    let j=read str3::Int
+    update newl i j 1
