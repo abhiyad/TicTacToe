@@ -1,4 +1,10 @@
-update state i j c= do
+printgame f n i = do
+      print (f !! i)
+      if(i<n-1) then printgame f n (i+1)
+      else print "-----------------------"
+
+
+game state i j c n= do
     let row=state !! i
     let p1=take j row
     let p2= drop (j+1) row
@@ -6,7 +12,7 @@ update state i j c= do
     let py1=take j state
     let py2=drop (j+1) state
     let f=py1++[nrow]++py2
-    print f
+    printgame f n 0
 
 main = do
     str<-getLine
@@ -16,4 +22,4 @@ main = do
     let i=read str2::Int
     str3<-getLine
     let j=read str3::Int
-    update newl i j 1
+    game newl i j 1 n
